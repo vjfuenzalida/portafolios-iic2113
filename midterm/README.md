@@ -272,6 +272,54 @@ Son puntos de entrada bien definidos, que proveen firmas de métodos (nombre de 
 
 ## Modelo 4 + 1
 
+Permite separar las preocupaciones (concerns) de los participantes (stakeholders). Se utiliza para describir la arquitectura de un sistema desde el punto de vista (interés) de los distintos stakeholders (usuarios finales, desarrolladores, project managers, ingenieros de sistemas, testers, etc).  
+Se definen 5 vistas principales, estas son: 
+
+![Modelo 4+1](https://jarroba.com/wp-content/uploads/2012/03/Kruchten.png)
+
+### 1. Vista Lógica
+
+> En esta vista se representa la funcionalidad que el sistema proporcionará a los usuarios finales. Representa lo que el sistema debe hacer, y las funciones y servicios que ofrece.  
+> Descomposición orientada a objetos (**conceptual**). Usada para el análisis **funcional**.
+
+> Es de interés para los usuarios finales y programadores.
+
+> En UML se modela utilzando Diagramas de Clases, de Comunicación o de Secuencia.
+
+### 2. Vista de Procesos
+
+> En esta vista se muestran los procesos concurrentes (dinámicos) dentro del sistema, y cómo se comunican estos procesos. Se enfoca en el comportamiento del sistema en tiempo de ejecución. Considera aspectos **no funcionales** de concurrencia, distribución, rendimiento, escalabilidad, etc. Representa las abstracciones principales de la vista lógica (**conceptual**).
+
+> Es de interés para un integrador de sistemas.
+
+> En UML se modela utilizando Diagramas de Actividades.
+
+### 3. Vista de Implementación
+
+> En esta vista se muestra el sistema desde la perspectiva de un programador y se ocupa de la gestión del software. Se muestra la división del sistema de software en sus componentes, y las dependencias que hay entre ellos. Enfoque en lo **funcional**.
+
+> Es de interés para los desarrolladores.
+
+> En UML se modela utilizando Diagramas de Componentes y de Paquetes.
+
+### 4. Vista Física
+
+> En esta vista se muestran la topología de los componentes físicos del sistema así como las conexiones físicas entre esos componentes que conforman la solución (incluyendo los servicios). Se refiere a aspectos **no funcionales** como escalabilidad y disponibilidad.
+
+> Es de interés para los ingenieros de sistemas.
+
+> En UML se modela utilizando Diagramas de Despliegue.
+
+### 5. Vista de Casos de Uso / de Escenarios
+
+> Tiene la función de unir y relacionar las otras 4 vistas. Describe la funcionalidad del sistema desde la perspectiva del *mundo exterior*. Contiene diagramas que describen lo que el sistema debe hacer desde una perspectiva de *caja negra*. 
+> Se evidencia trazabilidad de componentes, clases, equipos, paquetes, etc. para realizar cada caso de uso.
+> Se utiliza para identificar los elementos arquitectónicos y para ilustrar y validar el diseño arquitectónico.
+
+> En UML se modela utilizando Diagramas de Casos de Uso.
+
+##### Observación: El modelo se llama 4+1 debido a que la vista de Casos de Uso (+1) es la única que detalla los requerimientos de alto nivel del sistema. Las otras 4 vistas muestran cómo dichos requerimientos son cumplidos. UML fue creado después que el modelo 4+1 (es una herramienta para complementar la documentación de las vistas).
+
 ## Principios SOLID (Diseño de Componentes)
 
 ### 1. Single Responsability
