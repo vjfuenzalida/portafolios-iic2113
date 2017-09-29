@@ -4,32 +4,32 @@
 
 ### Creacionales
 
-####1. Abstract Factory
+#### 1. Abstract Factory
 
 > Contexto: Crear objetos pertenecientes a una misma familia.  
 > Provee una interfaz que delega las invocaciones de creación a una o más clases concretas para así retornar objetos específicos.  
 Se compone de una factory abstracta (factory OS, provee métodos como crear botón, crear ventana), factories concretas (factory de productos Windows y Linux), productos abstractos (botones, ventanas, etc) y productos concretos (botón windows, ventana linux, etc).
 
-####2. Constructor/Builder
+#### 2. Constructor/Builder
 
 > Permite la creación dinámica de objetos basada en algoritmos fácilmente intercambiables.
 > Director (usa un builder concreto con la interfaz del abstracto, construye productos), builder abstracto (provee interfaz común para builders), builders concretos (provee métodos del abstracto con valores específicos) y producto (objeto creado por constructor, dependiente de los parámetros del builder usado).  
 > Ejemplo: Cocina (director) utiliza un Builder de pizzas hawaianas (builder concreto) mediante la interfaz de un builder de pizzas (builder abstracto) para construir una pizza (producto). La cocina puede tener un método `construir pizza` que use la interfaz del builder (crear pizza, build masa, build salsa, etc) para efectivamente construir y retornar el objeto.
 
-####3. Factory Method
+#### 3. Factory Method
 
 > Clase expone un método para crear objetos, permitiendo que subclases controlen el proceso de creación real.  
 > Las subclases utilizan el método de creación que quieran.  
 > Ejemplo: Clase Tablero (abstracta) con método CrearPieza (factory method). Pueden existir subclases concretas TableroAjedrez y TableroDamas, donde cada una tiene su propia función concreta CrearPieza (CrearPiezaAjedrez, CrearPiezaDamas).
 
-####4. Prototype	
+#### 4. Prototype	
 
 > Permite crear objetos basado en un template (prototipo) de objetos existentes mediante clonación.  
 > La interfaz abstracta de una clase (prototipo abstracto) declara una operación para clonarse a si misma. El prototipo concreto implementa la operación de clonarse a sí mismo.  
 > Permite mantener el estado del objeto y no quedar con los defaults impuestos al crear un nuevo objeto (como método new).
 
 
-####5. Singleton
+#### 5. Singleton
 
 > Asegura que solo una instancia de una clase sea permitida en un sistema.
 > La clase es responsable de la creación e inicialización (lo hace una sola vez, luego retorna la misma instancia siempre).
@@ -37,96 +37,96 @@ Ejemplo: se puede aplicar en una *factory* que genera objetos, para que ésta se
 
 ### Estructurales
 
-####1. Adaptador
+#### 1. Adaptador
 > Convertir la interfaz de una clase en otra interfaz, que es la que los clientes esperan. Permite que distintas clases/módulos trabajen juntos cuando por si solos no podrían (interfaces incompatibles).
 > Se compone de una interfaz (lo que el cliente ve/usa), el adaptador concreto o wrapper (mapea la operación de la interfaz a la del componente adaptado) y el componente adaptado (realiza su propia operación, llamada desde el adaptador).
 
-####2. Bridge
+#### 2. Bridge
 > Desacoplar una abstracción de su implementación de modo que ambas puedan variar independientemente (que sean extensibles mediante subclases).  
 > Ejemplo: Thread Scheduler (abstracta) que puede ser de tipo Preemptive y TimeSliced, y puede estar implementado en distintas plataformas (Windows y Linux). Para **evitar armar todas las combinaciones**, se separa la abstracción de ThreadScheduler y de Plataforma, de modo que ambas puedan ser extendidas independientemente (por ejemplo si aparece un nuevo tipo de scheduler u otra plataforma). Finalmente, cuando se instancie un thread scheduler concreto, se le  *pasa* una plataforma para que opere (con una interfaz común).
 
-####3. Composite
+#### 3. Composite
 > Componer objetos en estructuras de árbol para representar sus **jerarquías**. Permite que los clientes traten a los objetos individuales ("primitivos") y a composiciones de objetos de la misma forma.  
 > Se define una **clase común "Componente"**, que especifica el comportamiento uniforme que tendrán todos los objetos primitivos y compuestos. En general también se añaden métodos para manejar a los "hijos" de un objeto compuesto (en los objetos primitivos no se implementan estos métodos).
 > Ejemplo: Un directorio contiene entradas, y cada entrada puede ser a su vez un directorio. Contenedores que contienen elementos, que a su vez puede ser contenedores.
 
-####4. Decorador
+#### 4. Decorador
 > Añadir responsabilidades adicionales a un objeto dinámicamente (individualmente, no a su clase completa). Proveen una alternativa flexible a las subclases, que permite extender funcionalidad.  
 > Funciona 'encadenando' características nuevas para producir un objeto personalizado. Se envuelve al objeto en un wrapper que provee la misma interfaz del objeto (*mínimo común denominador* de todos los objetos de la clase) y añade alguna nueva característica.
 > Ejemplo: interfaz LCD provee método `draw`, y utiliza una clase Window que provee el mismo método. A su vez, utiliza un wrapper/decorador que *envuelve* a un objeto Window, también provee el método `draw`, y además le añade una característica nueva (borde, sidebar, etc). Así, una Window envuelta en cualquier wrapper también responderá a la interfaz de LCD, pero puede tener características específicas.
 
-####5. Fachada
+#### 5. Fachada
 > Provee una interfaz unificada para un set de interfaces en un subsistema. La fachada define una interfaz de alto nivel que hace a un subsistema más fácil de usar. *Envuelve* a un subsistema en una **interfaz más simple**.
 > Ejemplo: Se tienen componentes de un computador (complejos): CPU, RAM y Disco Duro. Se puede crear una interfaz llamada Computador que provea un método `start` (prender el computador), y que internamente ésta realice las acciones complejas de cada componente.
 
-####6. Flyweight
+#### 6. Flyweight
 > Facilita el reuso de muchos objetos livianos, haciendo que el uso de grandes cantidades de estos sea más eficiente.  
 > Estos objetos se componen de un estado intrínseco y uno extrínseco (dependen de un cliente externo que les provee un estado). Deben ser instanciados desde una *Factory*, que se encarga de cachear o reusar instancias existentes.  
 > Ejemplo: los browsers, para evitar cargar una imagen varias veces la guardan en una caché interna. Cuando se requiere ubicar un objeto en la vista, se crea un objeto flyweight que posee datos propios como su posición, pero el resto de los datos se referencian de una versión cacheada.
 
-####7. Proxy
+#### 7. Proxy
 > Permite regular el control de acceso de objetos funcionando como una entidad intermediaria (proxy, sustituto). Provee un nivel de indirección extra para proteger o controlar el acceso a un objeto. Existen proxys: virtuales (reemplaza al objeto real hasta que se requiere acceder o usar el mismo -> es muy *caro* tener instanciado el objeto desde antes), remotos (representación local de un objeto que se encuentra en otro lugar), y de protección (controla acceso al objeto, revisa permisos, etc).
 > Ejemplo: un cheque es un proxy para reemplazar los fondos de una cuenta (controla acceso al efectivo en la cuenta).
 
 ### De Comportamiento
 
-####1. Cadena de Responsabilidades
+#### 1. Cadena de Responsabilidades
 > Evita acoplamiento del emisor de una request con su receptor dando la oportunidad a más de un objeto para encargarse de la request. Encadena los objetos receptores y pasa la request a lo largo de la cadena hasta que uno de los objetos la procese (debería haber un control para capturar requests no manejadas). 
 
-####2. Comando
+#### 2. Comando
 > Encapsula una request permitiendo que sea tratada como un objeto. Esto permite que la request sea manejada mediante relaciones tradicionales de objetos como queuing y callbacks.  
 > Desacopla el objeto que invoca la operación (comando) del que sabe cómo ejecutarla (receptor). La clase base contiene un método `execute()` que simplemente llama a la acción en el objeto receptor. Los usuarios de objetos *comando* tratan a cada objeto como una *caja negra* y sólo invocan al método `execute()` cuando requieren el servicio del objeto.
 > Se crea un comando concreto que implementa el método `execute()` y está conectado a un receptor que ejecuta la acción. Luego, cuando un invocador toma el comando, puede utilizar la interfaz `execute()` para que se realice la acción.
 
-####3. Intérprete
+#### 3. Intérprete
 > Dado un lenguaje, define una representación para su *gramática* junto a un intérprete que usa la representación para interpretar frases en ese lenguaje.
 Ejemplo: parser de operaciones aritméticas ("1 + 2 + 3 - 4").
 > Se mapea cada símbolo (terminal o no-terminal) de la gramática a una clase y se organizan mediante el patrón Composite. Finalmente se itera sobre los elementos del input, avanzando y almacenando el nuevo estado a medida que se va formando el output.
 
-####4. Iterador
+#### 4. Iterador
 > Provee una forma secuencial de acceder a elementos de un objeto agregado, sin exponer cómo están almacenados internamente (representación interna).
 > Ejemplo: Control remoto para cambiar canales de TV. 
 
-####5. Mediador
+#### 5. Mediador
 > Define un objeto que encapsula cómo un set de otros objetos interactúan. Promueve el acoplamiento débil al quitar las referencias directas a objetos (pasan por el mediador).  
 > Actúa como un Hub de comunicación, y es responsable de controlar y coordinar las interacciones de sus clientes (Observación: no es un objeto controlador/*dios*).  
 > Ejemplo: Torre de control en aeropuerto. Los aviones no se comunican entre ellos, toda comunicación es mediada por la torre (definir quién despega y quién aterriza). 
 
-####6. Memento
+#### 6. Memento
 > Capturar y externalizar el estado interno de un objeto (sin violar encapsulación) para que pueda ser retornado a ese estado en otro momento.  
 > El patrón se compone de 3 roles: el Originador (objeto que sabe guardar su estado), el *Caretaker* (objeto que sabe por qué y cuándo el Originador necesitará guardar y restaurar su estado), y el Memento (objeto cerrado escrito y leído por el Originador, almacenado por el *Caretaker*).
 
-####7. Estado
+#### 7. Estado
 > Permite a un objeto alterar su comportamiento cuando su estado interno cambia. Parecerá que el objeto cambió su clase. Los estados por lo general son singletons.  
 > Se crea una máquina de estados, que actúa como wrapper, provee una interfaz (genérica, que será sobreescrita por los estados) y contiene al estado actual.  
 > Existe una clase base Estado, que implementa todos los métodos de la interfaz del wrapper y recibe al wrapper como parámetro. Los estados derivados de Estado, sobreescriben solo los métodos que necesitan (dependiendo de cada estado). Todas las llamadas a la interfaz del wrapper se delegan al estado actual que éste mantenga y al ejecutarse, el estado es el encargado de cambiar el estado actual de la máquina por el siguiente que corresponda.  
 
-####8. Estrategia
+#### 8. Estrategia
 >  Define una **familia de algoritmos**, encapsula cada uno, y los hace **intercambiables** (deben cumplir la misma interfaz pero se comportan distinto). Permite que el algoritmo cambie en tiempo de ejecución independientemente de quien lo usa.  
 > Captura la abstracción en una interfaz, y esconde la implementación en clases derivadas (algoritmos/estrategias).
 > Se compone de abstracción que provee una interfaz general (por ejemplo un método `doSomething()`), y esta abstracción (Strategy) puede escoger entre distintos algoritmos según el contexto (que también implementan `doSomething()`).  
 > Ejemplo: Sistema de cobro en un bar: se define la clase abstracta BillingStrategy que declara el método `getPrice()`, y las estrategias concretas NormalStrategy y HappyHourStrategy, que implementan el método getPrice distinto (happy hour calcula a mitad de precio). Luego, el programa principal escoge entre usar NormalStrategy y HappyHourStrategy según la hora del día.
 
 
-####9. Template Method
+#### 9. Template Method
 > Define el esqueleto de un algoritmo en una operación, y aplaza la definición de algunos pasos a las subclases del cliente. Permite que las subclases redefinan ciertos pasos de un algoritmo sin cambiar la estructura del mismo (es un *molde*).  
 > Se define qué pasos de un algoritmo son invariantes y estos se implementan en una clase base abstracta. Los pasos customizables (variantes) pueden ser dejados con una implementación por defecto, o sin implementación. Las clases concretas derivadas pueden proveer dichos pasos o modificar los existentes, pero sin cambiar el orden ni los pasos requeridos (fijado por la clase base).  
 > Ejemplo: Trabajador (clase abstracta) tiene una rutina diaria (despertarse, desayuno, trabajar, volver a casa y dormir), y sus subclases concretas sobreescriben el método `trabajar()` dependiendo del caso (constructor, cartero, etc).  
 > Nota: Se parece a Strategy pero difieren en su granularidad (strategy pasa algoritmos completos mediante delegación, y template method usa herencia para variar una parte de un algoritmo).
 
-####10. Visitor
+#### 10. Visitor
 > Representa una operación a ser realizada sobre los elementos de una estructura de objeto. El Visitor permite definir una nueva operación sin cambiar las clases de los elementos sobre los que opera.  
 > Se definen objetos que hereden de la clase Element, que declara el método `accept()`. Cada subclase ("visitable") debe definir `accept()` que reciba como parámetro a un Visitante genérico e invoque su método `visit()` pasándole como parámetro el Element mismo. Cuando el Visitante ejecuta el método `visit()`, elegirá la implementación adecuada según el tipo/clase del Element entregado, y realizará una operación utilizando al objeto.  
 > Resumen: Visitable acepta a visitante, y visitante visita a visitable (opera sobre él). Son dos dispatches.
  
-####11. Observador
+#### 11. Observador
 >  Define una dependencia one-to-many entre objetos para que cuando un objeto cambie de estado, todos sus dependientes sean notificados y actualizados automáticamente.  
 >  Se define un objeto Subject que 'posee' el modelo de datos y/o la lógica de negocios. Delega otras funciones (como vista o representación de los datos) a objetos Observadores que se registran al Subject. Cuando el Subject cambia, transmite a todos sus observadores avisando que ha cambiado, para que estos pidan el nuevo estado del Subject o parte de él.  
 >  Si el protocolo de interacción es *pull*, el Subject debe tener un método para registrar/remover Observadores (`attach()`/`detach()`), un método `getState()` para consultar su estado, y otro método `setState()` que llamará al método `update()` de cada Observador suscrito (que a su vez usa `getState()` del Subject)
 
 ## Principios de Diseño
 
-###1. Abstracción
+### 1. Abstracción
 
 #### Concepto:
 > Abstracción es el proceso de extraer o remover características de algo, con el fin de reducirlo a un conjunto de características esenciales.
@@ -140,7 +140,7 @@ Ejemplo: parser de operaciones aritméticas ("1 + 2 + 3 - 4").
 > Las decisiones de diseño susceptibles de cambio deben ocultarse detrás de interfaces abstractas.
 
 
-###2. Ocultamiento
+### 2. Ocultamiento
 
 #### Concepto:
 > Ocultamiento (de información) hace referencia a la habilidad para prevenir que ciertos aspectos de una clase o componente de software sean accesibles por sus usuarios.  
@@ -158,7 +158,7 @@ Then, when that part of B changes, you don't have to go back and change A.*
 
 > Ejemplos: encapsulamiento (técnica que aplica principio des ocultamiento), patrón Bridge (desacoplar una abstracción de su implementación), interfaces para clases.
 
-###3. Acoplamiento
+### 3. Acoplamiento
 
 #### Concepto:
 > Es el grado de interdependencia entre dos módulos de software. Es una medida de qué tan conectadas (relacionadas) están dos rutinas/clases/módulos/componentes.
@@ -185,7 +185,7 @@ Then, when that part of B changes, you don't have to go back and change A.*
 
 > El bajo acoplamiento **mejora la comprensibilidad** aislada de cada componente (sin necesidad del contexto), **reduce el costo de realizar cambios** (se necesita poco conocimiento del contexto) y **mejora el reuso de componentes** (menos dependencias, más fáciles de adaptar a nuevos contextos).
 
-###4. Cohesión
+### 4. Cohesión
 
 #### Concepto:
 > El grado en que los elementos de un módulo permanecen juntos. Mide de la fuerza de la relación entre las piezas de funcionalidad dentro de un módulo dado. 
@@ -212,7 +212,7 @@ Then, when that part of B changes, you don't have to go back and change A.*
 #### Ventajas:
 > La alta cohesión **reduce la complejidad** de los módulos (más simples, con menos operaciones), **incrementa la mantenibilidad** del sistema (cambios afectan a menos módulos), e **incremenenta la reutilización de módulos** (una funcionalidad particular puede ya estar implementada en el código, y al ser cohesiva permite su reuso).
 
-###5. Otros conceptos
+### 5. Otros conceptos
 
 ####   Encapsulamiento
 > Técnica de ocultamiento. Es el proceso de combinar los elementos de una abstracción que constituyen su estructura y comportamiento en una nueva entidad, restringiendo el acceso directo a los mismos.  
@@ -274,7 +274,7 @@ Son puntos de entrada bien definidos, que proveen firmas de métodos (nombre de 
 
 ## Principios SOLID (Diseño de Componentes)
 
-###1. Single Responsability
+### 1. Single Responsability
 
 **Una clase o módulo debería tener una única razón para cambiar**, es decir, debe estar encargada de una sola cosa, y no aglomerar muchas responsabilidades. El motivo detrás de esto es que al fallar una funcionalidad de dicha clase/módulo, queremos que el resto del software siga funcionando, y si la clase sólo encapsula una función, no perderemos nada adicional (otros métodos, por ejemplo).
 
@@ -332,7 +332,7 @@ public class OxygenAlerter {
 }
 ```
 
-###2. Open-Closed
+### 2. Open-Closed
 
 Las entidades de código deben estar abiertas para extensión pero cerradas para modificación. **Se debe escribir clases que cumplan con lo que deben hacer perfectamente, sin asumir que alguien las modificará después** (extensibles).
 Así, uno debería construir una clase de modo tal que el procedimiento que sigue para proveer una funcionalidad no sea ambiguo y sea **independiente del formato del input**, al mismo tiempo que permita ser extensible (por medio de herencia, por ejemplo).  
@@ -393,19 +393,19 @@ public class PrinterLogger : IMessageLogger {
 }
 ```
 
-###3. Liskov's Substitution
+### 3. Liskov's Substitution
 
 Si hay herencia, **las clases hijas deben responder como la clase padre sin fallar, es decir, deben ser intercambiables**. Así, si hay una funcionalidad de la clase padre que no será usada por la clase hija (o devolverá error), es mejor evitar el uso de herencia. Las subclases deberían operar de la misma forma que la clase padre, es decir, los parámetros de las subclases deben ser del mismo tipo o menos restrictivos que los de la clase padre, y los retornos de las subclases deben ser de igual tipo o más restrictivos que la clase padre (hay más [condiciones/reglas](https://en.wikipedia.org/wiki/Liskov_substitution_principle#Principle) para garantizar un *behavioural subtype*).
 Ejemplos típicos: Elipse/círculo, rectángulo/cuadrado (métodos para calcular áreas entre otros).
 
-###4. Interface Segregation
+### 4. Interface Segregation
 
 Plantea que **se deben favorecer las interfaces sencillas y específicas para cada cliente, es decir, solo proveer lo que sea necesario**.   
 Las clases y sus dependencias se comunican usando interfaces específicas, minimizando las dependencias en miembros no usados y reduciendo el acoplamiento. Interfaces más sencillas son más flexibles y reutilizables, y entre menos clases compartan interfaces, se requieren menos cambios para responder a una modificación en la interfaz (mayor robustez).  
 **Con interfaces más pequeñas, es más fácil introducir nuevas clases que las implementen.**      
 Por ejemplo: en un menú de un restaurant se señala la *sopa del día* en vez de imprimir todos los días un menú especificando qué sopa hay. En este caso, el objetivo es simplemente que el cliente conozca el precio, y si necesita saber qué sopa específica hay, puede utilizar la *interfaz* de preguntarle al mesero.
 
-###5. Dependancy Inversion
+### 5. Dependancy Inversion
 
 Llama a **escribir código que dependa de abstracciones y no de detalles concretos**, y para reconocerlo se puede observar el *input* que recibe un método y pensar en qué tan genérico (abstracto) es.   
 Módulos de alto nivel (con más funcionalidades, lógica de negocios) no deberían depender de módulos de bajo nivel (operaciones detalladas/específicas), sino que ambos deben depender de abstracciones. Esto permite sustituir dependencias por otras nuevas (que implementen la misma interfaz) sin generar impactos negativos.  

@@ -6,7 +6,7 @@
 
 ## Contenidos
 
-###1. En cada carpeta */semana{n}* se encuentran los siguientes contenidos:
+### 1. En cada carpeta */semana{n}* se encuentran los siguientes contenidos:
 
 *   El portafolio correspondiente a la semana *n* en formato Markdown (.md).
 
@@ -15,9 +15,9 @@
 *   Una copia de la evidencia que sustenta al portafolio *n* en formato PDF (.pdf).
 
 
-###2. La carpeta */midterm* contiene los contenidos evaluados en el Midterm:
+### 2. La carpeta */midterm* contiene los contenidos evaluados en el Midterm:
 
-####A. Patrones de Diseño
+#### A. Patrones de Diseño
 
 ##### Creacionales
 * Abstract Factory
@@ -50,7 +50,7 @@
 * Visitor
 * Observador
 
-####B. Principios de Diseño
+#### B. Principios de Diseño
 
 * Abstracción
 * Ocultamiento
@@ -58,13 +58,13 @@
 * Cohesión
 * Otros conceptos
  
-####C. Code Smells
+#### C. Code Smells
 
-####D. Refactoring
+#### D. Refactoring
 
-####E. Modelo 4 + 1
+#### E. Modelo 4 + 1
 
-####F. Principios SOLID (Diseño de Componentes)
+#### F. Principios SOLID (Diseño de Componentes)
 
 * Single Responsability
 * Open-Closed
@@ -72,6 +72,6 @@
 * Interface Segregation
 * Dependancy Inversion
 
-####G. Diagramas UML
+#### G. Diagramas UML
 
-####H. Diseño en Web
+#### H. Diseño en Web
