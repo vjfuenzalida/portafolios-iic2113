@@ -1,37 +1,77 @@
-## Welcome to GitHub Pages
+# Portafolios Semanales - Diseño Detallado de Software
 
-You can use the [editor on GitHub](https://github.com/vjfuenzalida/portafolios-iic2113/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### Por Vicente Fuenzalida Marín
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+-----------
 
-### Markdown
+## Contenidos
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+###1. En cada carpeta */semana{n}* se encuentran los siguientes contenidos:
 
-```markdown
-Syntax highlighted code block
+*   El portafolio correspondiente a la semana *n* en formato Markdown (.md).
 
-# Header 1
-## Header 2
-### Header 3
+*   El portafolio correspondiente a la semana *n* en formato PDF (.pdf).
 
-- Bulleted
-- List
+*   Una copia de la evidencia que sustenta al portafolio *n* en formato PDF (.pdf).
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+###2. La carpeta */midterm* contiene los contenidos evaluados en el Midterm:
 
-[Link](url) and ![Image](src)
-```
+####A. Patrones de Diseño
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+##### Creacionales
+* Abstract Factory
+* Constructor/Builder
+* Factory Method
+* Prototype	
+* Singleton
 
-### Jekyll Themes
+##### Estructurales
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/vjfuenzalida/portafolios-iic2113/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+* Adaptador
+* Bridge
+* Composite
+* Decorador
+* Fachada
+* Flyweight
+* Proxy
 
-### Support or Contact
+##### De Comportamiento
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+* Cadena de Responsabilidades
+* Comando
+* Intérprete
+* Iterador
+* Mediador
+* Memento
+* Estado
+* Estrategia
+* Template Method
+* Visitor
+* Observador
+
+####B. Principios de Diseño
+
+* Abstracción
+* Ocultamiento
+* Acoplamiento
+* Cohesión
+* Otros conceptos
+ 
+####C. Code Smells
+
+####D. Refactoring
+
+####E. Modelo 4 + 1
+
+####F. Principios SOLID (Diseño de Componentes)
+
+* Single Responsability
+* Open-Closed
+* Liskov's Substitution
+* Interface Segregation
+* Dependancy Inversion
+
+####G. Diagramas UML
+
+####H. Diseño en Web
