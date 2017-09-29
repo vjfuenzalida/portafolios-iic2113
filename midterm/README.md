@@ -267,8 +267,88 @@ Son puntos de entrada bien definidos, que proveen firmas de métodos (nombre de 
  
 
 ## Code Smells
+> Gentileza de [@CristianCn](https://github.com/CristianCn)
+
+### Links útiles
+
+* [SourceMaking](https://sourcemaking.com/refactoring/smells)
+* [Coding Horror](https://blog.codinghorror.com/code-smells/)
+
+### 1. **Bloaters**
+
+Bloaters son códigos, métodos y clases que tienen un tamaño muy grande, por ende es difícil trabajar con ellos. Usualmente estos code smells no se identifican de buenas a primeras al crear código sino que aparecen a medida que los proyectos crecen y se vuelven más complicados.
+
+Dentro de estos tenemos los siguientes smells:
+
+* Métodos muy largos
+* Clases muy largas
+* Lista de parámetros muy extensa
+* Muchas clases repiten código, esto se da por el *copy-paste programming*
+* Obsesión con datos primitivos: muchas veces resulta más eficiente crear una clase con un tipo de dato custom en vez de a la fuerza utilizar muchos integers por ej para representar una fecha.
+
+### 2. **Object orientation abusers**
+
+Se refieren a smells que denotan un incorrecto uso de OOP, abusando de los principios que este paradigma entrega.
+
+* Temporary field: fields que tienen valores pero solo se requieren para determinados casos, por ej. definir un valor *hardcodeado* para salvar un caso borde.
+* Switch statements: usar muchos switch case o muchos ifs
+* Refused bequest: Cuando se subclasea pero la subclase solo utiliza algunos métodos, los otros sobran y queda más lógica de la que debería o se implementan excepciones para manejar los métodos que no corresponden. Esto es herencia mal ocupada.
+* Alternative classes with different interfaces: clases que hacen las mismas funciones pero tiene métodos que se llaman distinto.
+
+### 3. **Change preventers**
+
+Smells relacionados a los cambios a efectuar en el código si una parte pequeña cambia, no deberían haber muchas dependencias si no son necesarias.
+
+* Divergent change: Cuando todos los cambios que se hacen al programa se realizan sobre solo una clase, quizás la clase posee demasiada lógica y no posee poca cohesión.
+* Shotgun surgery: Al revés del anterior un cambio pequeño hace que muchas clases deban cambiar.
+* Paraller inheritance: cuando se crea una subclase para una clase y uno se encuentra en la obligación de crear una subclase para otra clase. Se podría estar duplicando código al crear dos subclases pero a veces tratan lógica distinta por lo que se permite.
+
+### 4. **Dispensables**
+
+Cosas innecesarias.
+
+* Código duplicado
+* Comentarios que expliquen el código (deberían ser muy cortos si es que hay)
+* Código que no se usa o nunca se llega a él
+* Lazy class: clase realizada pero que no tiene importancia podría ser perfectamente una función o algo más simple.
+* Data class: clases que solo tienen atributos y los métodos son geters o seters pero no se tiene lógica, hay que ver bien si estas clases son necesarias.
+* Speculative generality: clases creadas pero que no se ocupan, realizadas para mantenerse dry pero en verdad es una generalización que no se ocupa y queda solo la definición de la clase.
+
+### 5. **Couplers**
+
+Contribución excesiva entre distintas clases, quizás existe una delegación excesiva.
+
+* Message chains: Cuando se ven una serie de llamadas sucesivas, un ej callback hell de JS, `a=>b=>c=>d...`
+* Innapropriate intimacy: una clase utiliza los atributos internos y métodos de otra clase.
+* Middle Man: Una clase que no tenga lógica propia y sirva solo para delegar acciones desde una clase a otra. Para qué existe esta clase?
+* Incomplete library class: librería incompleta, pasa a menudo que librerías no tienen todo lo que deberían y quedan obsoletas pues no se tiene acceso a cambiarlas.
+* Feature envy: un método accesa más a información de otra clase más que a la propia información.
+
 
 ## Refactoring
+
+Link útil: [SourceMaking](https://sourcemaking.com/refactoring/refactorings)
+
+### Definición
+>  Técnica de la ingeniería de software para reestructurar un código fuente, alterando su estructura interna sin cambiar su comportamiento externo (*mismo output*).  
+> **No arregla errores ni añade funcionalidad**. El objetivo es mejorar la facilidad de comprensión del código o cambiar su estructura y diseño y eliminar código muerto, para facilitar el mantenimiento en el futuro.  
+> Mejora los atributos **no funcionales** del software, como mantenibilidad, legibilidad, extensibilidad.
+
+Aspectos a revisar de un código, propuestos en clases:
+
+*  Cantidad de líneas del método/clase/componente (más de 5-7 es díficil de retener para una persona).
+
+*  Anidación de condicionales (ej: `if (A){if (B){if (C){...}}}`).
+
+*  Retornos con operaciones difíciles de entender.
+
+*  Constantes *hardcodeadas* (ej: `if x == 1 do ...`).
+
+*  Repetición de llamadas a funciones (cuando se podría hacer una única vez).
+
+*  Condiciones lógicas complejas (ej: `A || B && (C || D)`)
+
+* ...
 
 ## Modelo 4 + 1
 
@@ -462,5 +542,11 @@ Otro ejemplo: clase PasswordReminder utiliza un objeto MySQLConnection para cone
 
 
 ## Diagramas UML
+
+### 1.  
+### 2. 
+### 3. 
+### 4. 
+### 5. 
 
 ## Diseño en Web
