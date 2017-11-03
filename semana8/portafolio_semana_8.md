@@ -1,41 +1,66 @@
 
-# Portafolio Semana 3
+# Portafolio Semana 8
 
 Autor: Vicente Fuenzalida Marín  
-Fecha de Entrega: 25 de agosto de 2017  
-Tema: Uso del lenguaje de modelado de sistemas UML
+Fecha de Entrega: 29 de septiembre de 2017  
+Tema: Uso de comentarios dentro del código
 
-## Uso de UML en proyectos de software
+## Uso de comentarios (en código)
 
 ### Artefacto
 
-El artefacto que escogí esta semana es una [entrada de Quora](https://www.quora.com/Do-prestigious-software-companies-regularly-use-UML) donde se pregunta si las compañías exitosas utilizan regularmente UML.  
-En particular extraigo las dos primeras respuestas, de Cris Fuhrman y Charles Rivet. Se adjunta una [copia](https://github.com/vjfuenzalida/portafolios-iic2113/blob/master/semana3/artefacto_semana_3.pdf) del artefacto en formato PDF en el repositorio de Git.  
-Las respuestas que se brindan intentan resolver si un desarrollador necesitará o no saber/utilizar UML en su trabajo. Esto variará según el tipo de trabajo (o cargo a desempeñar) que tendrá la persona dentro de la empresa.  
+El artefacto que escogí esta semana es una [entrada de *The Practical Dev*](https://www.quora.com/Do-prestigious-software-companies-regularly-use-UML) donde un desarrollador entrega sus consejos sobre el uso de comentarios como complemento al código escrito.
+  
+En resumidas cuentas, Andreas Klinger (autor) señala que el objetivo de los comentarios no es explicar *qué* es un determinado fragemento de código, sino *para qué* sirve dicho código.
+  
+En principio, plante que es responsabilidad del mismo código ser autoexplicativo, es decir, debe poder responder al *qué es* por si solo. La labor de los comentarios es explicar por qué dicho código existe, y por qué realiza una acción (debe explicar lo que no es *obvio*).  
 
-Como primer diferenciador, Fuhrman señala que UML es visto como un requisito en cargos de tipo *senior* más que desarrollador, debido a que permite una mayor abstracción y comprensión del diseño, dejando de lado los 'detalles tediosos' del código.  
-Además, él señala que el fenómeno de la *comoditización* del software impulsa a las empresas a buscar programadores que 'completen el trabajo' más que garantizar un software bien diseñado, mantenible o escalable, lo que tiene por consecuencia que se bajen los estándares requeridos para un ingeniero.  
-Por último, menciona que debido a las exigencias del mercado, al tiempo que toma y a la falta de herramientas útiles, un programador se ve inclinado a evadir el uso de UML.
+A modo de ejemplo entrega el siguiente extracto:
 
-El otro usuario que comenta, Rivet, da crédito a UML2 diciéndo que se ha vuelto una herramienta más *poderosa* y formal, pero a la vez mucho más compleja.  
-Rivet hace hincapié en que el uso de UML dependerá de la complejidad y el tamaño de la organización que está desarrollando software, comentando que para empresas más pequeñas que adoptan metodologías ágiles resulta más cómodo adoptar solo algunas partes de UML que respondan mejor a sus necesidades.  
-Por el contrario, afirma que para el desarrollo de sistemas complejos y de gran tamaño (software + hardware), el uso de UML básicamente 'se paga solo' y aumenta el nivel de abstracción drásticamente. Menciona que él, como desarrollador, ha visto casos en que el modelo mismo (apoyado por UML) es más valioso que el código generado, pero que sólo se utilizó UML debido a que los retornos del proyecto lo admitían (se deduce que el costo de software para modelar en UML es bastante alto).  
-Finalmente plantea lo siguiente:  
-> "...if your code and your UML model differ, it is useless and it is usually costly to maintain. Is UML relevant? Yes, but not for everyone and not for every project."
+Mal uso de comentarios: 
+
+```ruby
+class Newsletter
+  # removes stuff from newsletter
+  def remove(stuff)
+  …
+  end
+end
+```
+
+Buen uso de comentarios:
+
+```ruby
+class Newsletter
+  # Note(andreasklinger): In case we run into XYZ we need to remove the user to avoid
+  #   problems w/ ABC and DEFG's API. Read more here: https://.....
+  def remove(stuff)
+  …
+  end
+end
+```
+Para utilizar los comentarios correctamente entrega los siguientes consejos:
+
+* Explicar el *por qué* y no el *qué* de un código.
+
+* Dejar por escrito quién escribió el comentario (git blame podría no servir si se edita muchas veces un código)
+
+* Ser minucioso: en este aspecto se hace énfasis, ya que es muy probable que el código que un desarrollador genera pase a manos de otro desarrollador, al menos para ser invervenido un poco. Por lo mismo, llama a ponerse en el lugar del otro, y señala que lo que alguna vez fue obvio para uno, después no lo será para el próximo desarrollador que lo lea, y quizas tampoco para uno mismo (ya que se pierde el contexto en el que se estaba trabajando).
+
+Del último punto, Andreas se extiende señalando información que es útil dejar en los comentarios para preservar un contexto y ayudar a que el código sea más entendible: 
+
+* explicar sin asumir que los demás saben cómo funciona el sistema.
+* explicar las particularidades que se deben considerar de los sistemas internos y externos.
+* explicar qué partes son código legado.
+* explicar cuándo un código legado podrá ser removido.
+* explicar interdependencias no explícitas.
+* extenderse si se requiere escribir un parrafo más largo.
+* pedir que los demás desarrolladores que dejen notas grandes (al igual que uno).
+
+A modo de resumen, aconseja que después de escribir un comentario uno lo vuelva a leer y revise si hay algo que pueda ser removido o resumido/simplificado.
+
+> 	If you can't explain it simply, you don't understand it well enough.   
+>  -- Albert Einstein
 
 ### Reflexión
 
-Basado en los comentarios de estos dos desarrolladores de software, lo primero que concluyo es que el uso de UML depende fuertemente del contexto de desarrollo en que este se enmarque, esto es:
-*   Tamaño del proyecto
-*   Complejidad del proyecto
-*   Metodologías de desarrollo utilizadas (ágil, incremental, cascada, ...)
-*   Estructura y tamaño de la empresa
-*   Plazos de entrega (cortos, flexibles, largos)
-*   Costos y presupuesto para el proyecto (para poder costear herramientas modeladoras en UML)
-
-Así, no resulta nada sencillo definir si conviene o no utilizar UML en el desarrollo de software, añadiéndo que los desarrolladores deben dominar las normas para definir diseños y saber qué diseños son los más adecuados para cada caso, ya que como se conversó en clases, los diagramas UML son utilizados por distintas entidades y por lo mismo se descomponen en *4+1* vistas arquitectónicas (lógica, de desarrollo, de proceso, física y de casos de uso).
-
-En mi opinión particular, y basándome en el artefacto que escogí, me parece que los diagramas UML si pueden aportar información valiosa y representaciones más abstraídas para el uso de los distintos participantes en los proyectos de desarrollo de software, aunque también creo que su uso es absolutamente dependiente del tipo de proyecto y su envergadura.  
-Por lo anterior, utilizar UML me parece pertinente sólo cuando la complejidad supera a lo que un equipo pequeño puede manejar (framework Scrum por ejemplo) o cuando el proyecto de software es transversal a varios equipos de diseño/desarrollo que requieren comunicarse y cuyos artefactos de software son dependientes entre si, ya que agiliza la comprensión de los componentes y aporta un importante nivel de abstracción frente a complejidades innecesarias (a muchos desarrolladores no les importará cómo se realiza un cierto proceso o qué algoritmos utiliza, sino que simplemente el input/output del componente en cuestión).
-
-A modo de cierre, quisiera señalar que si bien no creo que UML sea la mejor alternativa siempre, si permite comprender y explicar mejor el funcionamiento de un software, y como en la mayoría de los casos un proyecto está inmerso en un entorno comercial o al menos involucra a otras áreas/departamentos (financiero, social, etc.), siempre será una alternativa para que estos grupos externos puedan visualizar y comprender qué es lo que hay detras del producto desarrollado (con distintos niveles de profunidad).
