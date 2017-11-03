@@ -1,4 +1,4 @@
-# Portafolio Semana 10
+# Portafolio del Mes - Octubre
 
 Autor: Vicente Fuenzalida Marín  
 Fecha de Entrega: 13 de octubre de 2017  

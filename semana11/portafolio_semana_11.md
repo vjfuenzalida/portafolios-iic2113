@@ -39,4 +39,3 @@ El artefacto que escogí esta semana es una [entrada](https://dev.to/mohitrajput
 ### Reflexión
 
 
-
