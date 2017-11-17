@@ -299,7 +299,7 @@ Se refieren a smells que denotan un incorrecto uso de OOP, abusando de los princ
 
 Smells relacionados a los cambios a efectuar en el código si una parte pequeña cambia, no deberían haber muchas dependencias si no son necesarias.
 
-* Divergent change: Cuando todos los cambios que se hacen al programa se realizan sobre solo una clase, quizás la clase posee demasiada lógica y no posee poca cohesión.
+* Divergent change: Cuando todos los cambios que se hacen al programa se realizan sobre solo una clase, quizás la clase posee demasiada lógica y poca cohesión.
 * Shotgun surgery: Al revés del anterior un cambio pequeño hace que muchas clases deban cambiar.
 * Paraller inheritance: cuando se crea una subclase para una clase y uno se encuentra en la obligación de crear una subclase para otra clase. Se podría estar duplicando código al crear dos subclases pero a veces tratan lógica distinta por lo que se permite.
 
@@ -404,7 +404,7 @@ Se definen 5 vistas principales, estas son:
 
 ### 1. Single Responsability
 
-**Una clase o módulo debería tener una única razón para cambiar**, es decir, debe estar encargada de una sola cosa, y no aglomerar muchas responsabilidades. El motivo detrás de esto es que al fallar una funcionalidad de dicha clase/módulo, queremos que el resto del software siga funcionando, y si la clase sólo encapsula una función, no perderemos nada adicional (otros métodos, por ejemplo).
+**Una clase o módulo debería tener una única razón para cambiar**, es decir, debe estar encargada de una sola cosa, y no aglomerar muchas responsabilidades. El motivo detrás de esto es que al fallar una funcionalidad de dicha clase/módulo, queremos que el resto del software siga funcionando, y si la clase sólo encapsula una función no perderemos nada adicional (otros métodos, por ejemplo).
 
 Ejemplo:
 
@@ -550,3 +550,16 @@ Otro ejemplo: clase PasswordReminder utiliza un objeto MySQLConnection para cone
 ### 5. 
 
 ## Diseño en Web
+
+## Frameworks
+
+## Cloud Computing
+
+## Métodos Formales
+
+
+
+
+
+
+
