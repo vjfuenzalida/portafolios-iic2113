@@ -3,11 +3,11 @@
 
 Autor: Vicente Fuenzalida Marín  
 Fecha de Entrega: 17 de noviembre de 2017  
-Tema: - [ToDo]
+Tema: Frameworks en el desarrollo de software moderno.
 
-## Título
+## Frameworks: los nuevos *lenguajes de programación*
 
-El artefacto que escogí esta semana es una [publicación](link) ... [ToDo]
+El artefacto que escogí esta semana es el artículo [*7 reasons why frameworks are the new programming languages*](https://www.infoworld.com/article/2902242/application-development/7-reasons-why-frameworks-are-the-new-programming-languages.html?page=2) del sitio InfoWorld, que habla de la importancia de los frameworks en el desarrollo de software en la actualidad.
 
 ## Artefacto
 
